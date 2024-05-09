@@ -8,10 +8,11 @@
           .card
             .card-body
               .d-flex.justify-content-between.mb-2
-                div
+                div.mb-3
                   h4.card-title
                     =>> User.find(feed.user_id).name
-                  span.text-muted= feed.created_at
+                  span.text-muted
+                    = time_ago_in_words(feed.created_at)
                 div
                   - if feed.user_id == current_user.id
                     = link_to edit_feed_path(feed.id) do
