@@ -1,0 +1,9 @@
+.container.w-50.mt-5
+  - if user_signed_in?
+    h2.h3.text-center.mb-3 Share your brilliant thoughts
+    .bg-light.border.rounded.p-3.mt-2
+      = render "form", feed: @feed
+
+  - else
+    .alert.alert-info.m-3.w-50.mx-auto.text-center.fs-5
+      p.m-0 You need to log in first to add new articles.

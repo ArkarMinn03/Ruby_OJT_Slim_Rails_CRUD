@@ -1,0 +1,15 @@
+= form_with model: @feed do |form|
+  .mb-5
+    = form.label :body, class: "form-label"
+    br
+    = form.text_area :body, { class: "form-control", rows: "5" }
+    - @feed.errors.full_messages_for(:body).each do |message|
+      div
+        = message
+
+  .mb-2.d-flex.justify-content-between
+    div
+      = form.label :status, class: "form-label"
+      = form.select :status, Visible::VALID_STATUSES, selected: feed.status || 'public'
+    div
+      = form.submit(class: "btn btn-success px-3")

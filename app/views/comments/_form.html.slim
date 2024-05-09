@@ -1,0 +1,6 @@
+= form_with model: [@feed, @feed.comments.build] do |form|
+  = form.hidden_field :user_id, value: current_user.id
+  = form.hidden_field :feed_id, value: @feed.id
+  .input-group
+    = form.text_field :content, placeholder: "Comment...", class: "form-control"
+    = form.submit(class: "btn btn-primary")

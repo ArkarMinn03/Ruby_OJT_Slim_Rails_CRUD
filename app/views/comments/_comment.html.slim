@@ -1,0 +1,11 @@
+.mb-2
+  - if comment.user_id
+    h6
+      | >
+      =<< User.find(comment.user_id).name
+    p
+      |< >>
+      =<> comment.content
+      - if comment.user_id == current_user.id
+        =<> link_to [comment.feed, comment], data: { turbo_method: :delete, turbo_confirm: "Gonna delete this message?" } do
+          = fa_icon 'trash', class: "text-danger"

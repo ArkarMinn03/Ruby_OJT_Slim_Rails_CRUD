@@ -1,0 +1,29 @@
+nav.navbar.navbar-expand-lg.bg-body-tertiary
+  .container
+    = link_to "FEEDS", root_path, class: "navbar-brand"
+    button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target ="#navbarSupportedContent"
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarSupportedContent
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        - if user_signed_in?
+          li.nav-item
+            = link_to "Feeds", feeds_path, class: "nav-link"
+          li.nav-item
+            = link_to "Add New", new_feed_path, class: "nav-link"
+        - else
+          li.nav-item
+            a.nav-link href="#" About Us
+          li.nav-item
+            a.nav-link href="#" FAQ
+      .d-flex
+        - if user_signed_in?
+          div
+            = button_to user_path(current_user.id), method: :get, class: "btn btn-light" do
+              = current_user.name
+          div
+            = button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger"
+        - else
+          div
+            = link_to "Create New Account", new_user_registration_path, class: "btn btn-primary me-2"
+          div
+            = link_to "Log in", new_user_session_path, class: "btn btn-outline-primary me-2"

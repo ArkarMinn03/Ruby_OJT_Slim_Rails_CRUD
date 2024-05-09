@@ -1,0 +1,11 @@
+.container.p-3.w-50.rounded.bg-light.my-3
+  h3 Profile
+  hr.border.border-success.border-1.opacity-100
+  .mb-2.fs-5
+    |> User Name :
+    = @user.name
+  .mb-5.fs-5
+    |> Email :
+    = @user.email
+  .mb-2.d-flex
+    = button_to "Edit", edit_user_registration_path, method: :get, class: "btn btn-success me-2 px-4"
